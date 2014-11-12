@@ -3837,7 +3837,15 @@ if (typeof jQuery === 'undefined') {
                 return false;
             }
             value = value.replace(/\./g, '').replace(/-/g, '');
-
+	    
+            // Remove invalids CPFs
+            if (value === '00000000000' || value === '11111111111' || value === '22222222222' ||
+                value === '33333333333' || value === '44444444444' || value === '55555555555' ||
+                value === '66666666666' || value === '77777777777' || value === '88888888888' ||
+                value === '99999999999')
+            {
+                return false;
+            }
             var d1 = 0;
             for (var i = 0; i < 9; i++) {
                 d1 += (10 - i) * parseInt(value.charAt(i), 10);
