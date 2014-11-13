@@ -3830,22 +3830,15 @@ if (typeof jQuery === 'undefined') {
          * @returns {Boolean}
          */
         _br: function(value) {
-            if (/^1{11}|2{11}|3{11}|4{11}|5{11}|6{11}|7{11}|8{11}|9{11}|0{11}$/.test(value)) {
-                return false;
-            }
+            
             if (!/^\d{11}$/.test(value) && !/^\d{3}\.\d{3}\.\d{3}-\d{2}$/.test(value)) {
                 return false;
             }
             value = value.replace(/\./g, '').replace(/-/g, '');
-	    
-            // Remove invalids CPFs
-            if (value === '00000000000' || value === '11111111111' || value === '22222222222' ||
-                value === '33333333333' || value === '44444444444' || value === '55555555555' ||
-                value === '66666666666' || value === '77777777777' || value === '88888888888' ||
-                value === '99999999999')
-            {
+	    if (/^1{11}|2{11}|3{11}|4{11}|5{11}|6{11}|7{11}|8{11}|9{11}|0{11}$/.test(value)) {
                 return false;
             }
+            
             var d1 = 0;
             for (var i = 0; i < 9; i++) {
                 d1 += (10 - i) * parseInt(value.charAt(i), 10);
